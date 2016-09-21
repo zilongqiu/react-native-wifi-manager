@@ -58,6 +58,12 @@ public class WifiManagerModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void enableWifi(Boolean status) {
+    WifiManager mWifiManager = (WifiManager) getReactApplicationContext().getSystemService(Context.WIFI_SERVICE);
+    mWifiManager.setWifiEnabled(status);
+  }
+
+  @ReactMethod
   public void connect(String ssid, String password) {
     WifiManager mWifiManager = (WifiManager) getReactApplicationContext().getSystemService(Context.WIFI_SERVICE);
     List < ScanResult > results = mWifiManager.getScanResults();
