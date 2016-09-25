@@ -1,5 +1,4 @@
 ## WiFi Manager for React Native (react-native-wifi-manager)
-[![npm version](https://badge.fury.io/js/react-native-wifi-manager.png)](http://badge.fury.io/js/react-native-wifi-manager)
 
 List, connect and get the status of the WiFi connection on the device.
 
@@ -8,7 +7,10 @@ List, connect and get the status of the WiFi connection on the device.
 First you need to install react-native-wifi-manager:
 
 ```javascript
-npm install react-native-wifi-manager --save
+"dependencies": {
+  ...
+  "react-native-wifi-manager": "git+ssh://git@github.com/zilongqiu/react-native-wifi-manager.git#master",
+},
 ```
 
 * In `android/app/src/main/AndroidManifest.xml` add these permissions inside `<manifest/>`.
@@ -48,7 +50,7 @@ import com.skierkowski.WifiManager.*;  // <--- import
 
 public class MainActivity extends ReactActivity {
   ......
-  
+
   /**
    * A list of packages used by the app. If the app uses additional views
    * or modules besides the default ones, add more packages here.
