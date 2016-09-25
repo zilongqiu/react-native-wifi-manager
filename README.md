@@ -41,14 +41,14 @@ dependencies {
 }
 ```
 
-* register module (in MainActivity.java)
+* register module (in MainApplication.java)
 
 On newer versions of React Native (0.18+):
 
 ```java
 import com.skierkowski.WifiManager.*;  // <--- import
 
-public class MainActivity extends ReactActivity {
+public class MainApplication extends Application implements ReactApplication {
   ......
 
   /**
@@ -61,39 +61,6 @@ public class MainActivity extends ReactActivity {
         new WifiManager(), // <------ add here
         new MainReactPackage());
     }
-}
-```
-
-On older versions of React Native:
-
-```java
-import com.skierkowski.WifiManager.*;  // <--- import
-
-public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
-  ......
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mReactRootView = new ReactRootView(this);
-
-    mReactInstanceManager = ReactInstanceManager.builder()
-      .setApplication(getApplication())
-      .setBundleAssetName("index.android.bundle")
-      .setJSMainModuleName("index.android")
-      .addPackage(new MainReactPackage())
-      .addPackage(new WifiManager())              // <------ add here
-      .setUseDeveloperSupport(BuildConfig.DEBUG)
-      .setInitialLifecycleState(LifecycleState.RESUMED)
-      .build();
-
-    mReactRootView.startReactApplication(mReactInstanceManager, "ExampleRN", null);
-
-    setContentView(mReactRootView);
-  }
-
-  ......
-
 }
 ```
 
