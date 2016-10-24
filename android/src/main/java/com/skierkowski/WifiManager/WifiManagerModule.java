@@ -6,6 +6,7 @@ import com.facebook.systrace.Systrace;
 import com.facebook.systrace.SystraceMessage;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiConfiguration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -55,6 +56,19 @@ public class WifiManagerModule extends ReactContextBaseJavaModule {
     } catch (IllegalViewOperationException e) {
       errorCallback.invoke(e.getMessage());
     }
+  }
+
+  @ReactMethod
+  public void getCurrentSSID(Callback callback) {
+    WifiManager mWifiManager = (WifiManager) getReactApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+    WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
+
+    if (wifiInfo == null) {
+      callback.invoke("null");
+    }
+
+    callback.invoke(wifiInfo.getSSID());
   }
 
   @ReactMethod
