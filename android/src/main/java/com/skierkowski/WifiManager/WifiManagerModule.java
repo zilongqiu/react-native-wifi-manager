@@ -139,6 +139,11 @@ public class WifiManagerModule extends ReactContextBaseJavaModule {
     statusResult.invoke(mWifi.getState().toString());
   }
 
+  @ReactMethod
+  public void wifiScanSecurity(String ssid, Callback callback) {
+    callback.invoke("test", "test2");
+  }
+
   private static Integer findNetworkInExistingConfig(WifiManager wifiManager, String ssid) {
    List<WifiConfiguration> existingConfigs = wifiManager.getConfiguredNetworks();
    for (WifiConfiguration existingConfig : existingConfigs) {
