@@ -14,6 +14,7 @@ import android.content.Context;
 
 import android.os.Bundle;
 import android.content.Context;
+import android.util.Log;
 import java.util.List;
 import com.facebook.systrace.Systrace;
 import com.facebook.systrace.SystraceMessage;
@@ -137,11 +138,6 @@ public class WifiManagerModule extends ReactContextBaseJavaModule {
     NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 
     statusResult.invoke(mWifi.getState().toString());
-  }
-
-  @ReactMethod
-  public void wifiScanSecurity(String ssid, Callback callback) {
-    callback.invoke("test", "test2");
   }
 
   private static Integer findNetworkInExistingConfig(WifiManager wifiManager, String ssid) {
